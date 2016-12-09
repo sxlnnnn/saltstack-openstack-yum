@@ -3,8 +3,8 @@
 
 前言
 
-    - 因为有很多朋友问我如何部署openstack，他们部署总是不成功，所以将部署过程用saltstack写出来，
-    - 需要的朋友只要将这个项目放到salt里面执行，就可以自动部署openstack环境了。
+     因为有很多朋友问我如何部署openstack，他们部署总是不成功，所以将部署过程用saltstack写出来，
+     需要的朋友只要将这个项目放到salt里面执行，就可以自动部署openstack环境了。
     
 openstack 部署环境
    
