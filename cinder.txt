@@ -1,0 +1,75 @@
+1 如果你要使用lvm
+
+vim /etc/cinder/cinder.conf
+[DEFAULT]
+enabled_backends = lvm
+#在文件末尾增加下面的内容
+[lvm]
+volume_driver = cinder.volume.drivers.lvm.LVMVolumeDriver
+volume_group = cinder-volumes
+iscsi_protocol = iscsi
+iscsi_helper = lioadm
+
+#重启cinder-volume服务
+systemctl start openstack-cinder-volume.service
+
+cinder-volume默认采用lvm驱动.
+但是安装后使用cinder service-list命令时，你会发现cinder-volume状态是down，这是因为没有创建卷。
+
+cinder-volume服务器上创建卷
+pvcreate /dev/sdb 
+vgcreate cinder-volumes /dev/sdb
+
+修改 /etc/lvm/lvm.conf，增加下面的内容
+filter = [ "a/sdb/", "r/.*/"]
+
+
+2 如果你要使用glusterfs
+
+vim /etc/cinder/cinder.conf
+[DEFAULT]
+enabled_backends = glusterfs
+#在文件末尾增加下面的内容
+[glusterfs]                                                          
+volume_driver = cinder.volume.drivers.glusterfs.GlusterfsDriver        
+glusterfs_shares_config = /etc/cinder/shares.conf                    
+glusterfs_mount_point_base = /var/lib/cinder/volumes                 
+volume_backend_name = glusterfs            
+
+#创建shares.conf，添加glusterfs挂载点
+
+cat >/etc/cinder/shares.conf<<EOF
+192.168.1.232:/raidl-volume
+EOF
+
+#重启cinder-volume服务
+systemctl restart openstack-cinder-volume.service
+
+#创建glusterfs类型
+cinder type-create glusterfs
+cinder type-key glusterfs set volume_backend_name=glusterfs
+
+3.如果你要使用nfs
+
+vim /etc/cinder/cinder.conf
+[DEFAULT]
+enabled_backends = nfs 
+
+#在文件末尾增加下面的内容
+[nfs] 
+volume_driver = cinder.volume.drivers.nfs.NfsDriver
+nfs_shares_config = /etc/cinder/nfs_shares
+nfs_mount_point_base = /var/lib/cinder/mnt
+volume_backend_name = nfs
+
+#创建nfs_shares，添加nfs挂载点
+cat >/etc/cinder/nfs_shares<<EOF
+192.168.1.90:/data
+EOF
+
+#重启cinder-volume服务
+systemctl restart openstack-cinder-volume.service
+
+#创建nfs类型
+cinder type-create nfs
+cinder type-key nfs set volume_backend_name=nfs 
