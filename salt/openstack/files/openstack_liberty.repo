@@ -1,0 +1,6 @@
+[openstack_liberty]
+name=openstack_liberty
+baseurl=http://mirrors.aliyun.com/centos/7.2.1511/cloud/x86_64/openstack-liberty/
+enabled=1
+priority=99
+gpgcheck=0
