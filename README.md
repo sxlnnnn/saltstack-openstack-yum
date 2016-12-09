@@ -16,5 +16,8 @@ openstack 部署环境
      192.168.1.231 node1
      192.168.1.232 node2
     
-2 服务器部署好salt环境
-3 将项目放到salt目录下执行状态，就会自动部署好openstack环境。
+服务器部署好salt环境
+
+
+
+将项目放到salt目录下执行状态，就会自动部署好openstack环境。
