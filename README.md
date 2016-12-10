@@ -1,4 +1,4 @@
-# saltstack-openstack-yum
+# openstack
       SaltStack自动化部署OpenStack-Liberty
 
 前言
