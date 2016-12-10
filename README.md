@@ -5,7 +5,15 @@
 
      因为有很多朋友问我如何部署openstack，他们部署总是不成功，所以将部署过程用saltstack写出来，
      需要的朋友只要将这个项目放到salt里面执行，就可以自动部署openstack环境了。
-    
+ 
+openstack架构
+
+!(https://github.com/sxlnnnn/saltstack-openstack-yum/blob/master/openstack.png)
+
+
+
+
+
 openstack 部署基础环境
    
 你需要最少有2台Centos7服务器，一台作为控制节点主机名node1,一台作为计算节点主机名为node2,并做好本地主机名解析。
