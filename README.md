@@ -41,7 +41,7 @@ openstack 部署基础环境
     
     
   
-把项目放到salt的目录执行状态就会自动安装好openstack环境。
+把项目放到/srv目录,执行状态就会自动安装好openstack环境。
 
 注意
    
