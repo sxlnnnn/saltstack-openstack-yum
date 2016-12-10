@@ -8,7 +8,7 @@
  
 openstack架构
 
-!(https://github.com/sxlnnnn/saltstack-openstack-yum/blob/master/openstack.png)
+![架构图](https://github.com/sxlnnnn/saltstack-openstack-yum/blob/master/openstack.png)
 
 
 
