@@ -24,7 +24,7 @@ openstack 部署基础环境
      192.168.1.231 node1
      192.168.1.232 node2
     
-服务器部署salt环境
+部署saltstack环境
 
     node1
     wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
